@@ -11,14 +11,14 @@
     <body>
         <h1 style="text-align: center;">HNU疫情自动打卡</h1>
         <hr>
-        <form action="">
-            <table align="center" border="0">
+        <form action="" method="POST">
+            <table align="center" border="0" style="text-align: center;">
                 <tr>
                     <th>
                         <label><span style="color: red;">*</span>学号：</label>
                     </th>
                     <td colspan="3">
-                        <input type="text" name="xuehao" autofocus="autofocus" style="width: 180px;" required="required" placeholder="即个人门户账号密码">
+                        <input type="text" name="xuehao" autofocus="autofocus" style="width: 192px;" required="required" placeholder="即个人门户账号密码">
                     </td>
                 </tr>
                 <tr>
@@ -26,7 +26,7 @@
                         <label><span style="color: red;">*</span>密码：</label>
                     </th>
                     <td  colspan="3">
-                        <input type="password" name="mima" style="width: 180px;" required="required" placeholder="密码在腾讯云安全管理">
+                        <input type="password" name="mima" style="width: 192px;" required="required" placeholder="密码在腾讯云安全管理">
                     </td>
                 </tr>
                 <tr>
@@ -42,13 +42,19 @@
                         <label><span style="color: red;">*</span>地址：</label>
                     </th>
                     <td>
-                        <input type="text" name="shengfen" style="width: 52px;" required="required" placeholder="XX省/市">
+                        <input type="text" name="shengfen" style="width: 52px;" required="required" placeholder="XX省/市" value="湖南省">
                     </td>
                     <td>
-                        <input type="text" name="shi" style="width: 52px;" required="required" placeholder="XX市">
+                        <input type="text" name="shi" style="width: 52px;" required="required" placeholder="XX市" value="长沙市">
                     </td>
                     <td>
-                        <input type="text" name="quxian" style="width: 52px;" required="required" placeholder="XX县/区">
+                        <input type="text" name="quxian" style="width: 52px;" required="required" placeholder="XX县/区" value="岳麓区">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="3">
+                        <input type="text" name="adress" style="width: 192px;" required="required" placeholder="详细地址">
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +70,7 @@
                         <label><span style="color: red;">*</span>邮箱：</label>
                     </th>
                     <td  colspan="3">
-                        <input type="email" name="youxiang" style="width: 180px;" required="required" placeholder="XXX@XXX.com">
+                        <input type="email" name="youxiang" style="width: 192px;" required="required" placeholder="XXX@XXX.com">
                     </td>
                 </tr>
                 <tr>
@@ -77,7 +83,7 @@
                         <label>姓名：</label>
                     </th>
                     <td  colspan="3">
-                        <input type="text" name="xingming" style="width: 180px;" placeholder="非必填，用于邮件中称呼">
+                        <input type="text" name="xingming" style="width: 192px;" placeholder="非必填，用于邮件中称呼">
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +102,13 @@
                 </tr>
             </table>
             <hr>
+            <p style="text-indent: 2em; margin: 40px;">
+                注：提交时间仅限7:00~23:50。为避开打卡网络拥堵高峰期，打卡时间在0:15~2:00。提交成功后会收到邮件提示，然后静候打卡邮件即可。
+            </p>
+            <!--温馨提示-->
+            <hr>
             <p style="text-indent: 2em; color: red; margin: 40px;">温馨提示：自动打卡不一定可靠，如果没收到邮件或者邮件提示报错，造成不可估量的后果，抑或是因为瞒报疫情产生严重后果，作者均不承担责任！</p>
+            <!--碎碎念-->
             <hr>
             <p style="text-indent: 2em; margin: 40px;">作者碎碎念：作者目前大二在读，因为兴趣和每天很晚起床，因此设计了这个程序来自动打卡防止忘记打卡。将打卡程序发布出来是因为身边的同学呼声太高，纯粹用爱发电，如果这个程序救了你一命或者生活费有多的话
                 <a  target="_blank" href="http://photogz.photo.store.qq.com/psc?/V51MUifW17hUmV3C5G5M07YAVT4Qb1M5/05RlWl8gsTOH*Z17MtCBzD9luOzyfNgV6UW7ba9S8U8iziF6djN8q2S1xfPQpW6wXzuJG9M2QxtsN7*dHubw.g!!/b&bo=6QL.A.kC*gMRADc!&rf=viewer_311">欢迎支持</a>
