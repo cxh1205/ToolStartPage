@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具起始页</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="qrcode.js"></script>
+    <style>
+        *{
+            user-select: none;
+        }
+
+        body,
+        html {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .block {
+            height: auto;
+            border-radius: calc(var(--size)*6/100);
+            float: left;
+            background: #ffdbdb;
+            box-shadow: 19px 19px 37px #d9baba,
+                -19px -19px 37px #fffcfc;
+            font-size: calc(var(--size)*2/100);
+        }
+
+        .title {
+            font-size: 300%;
+            font-weight: bolder;
+        }
+
+        .textarea {
+            border-radius: calc(var(--size)*2/100);
+            background: #ffd6d6;
+            box-shadow: inset 19px 19px 37px #d9b6b6,
+                inset -19px -19px 37px #fff6f6;
+            margin: 2% 0 2%;
+            height: calc(var(--size)*8/100);
+            width: 100%;
+        }
+
+        .logo {
+            height: calc(var(--size)*8/100);
+            width: calc(var(--size)*8/100);
+            float: left;
+            
+        }
+
+        .logo-pic{
+            width: 100%;
+            border-radius: calc(var(--size)*2/100);
+            pointer-events:none;
+            /* transform: translate(0,50%); */
+        }
+
+        .input-area {
+            float: left;
+            width: calc(100% - calc(var(--size)*8/100));
+            height: 100%;
+        }
+
+        .button {
+            float: right;
+            height: 100%;
+            font-size: 200%;
+            width: auto;
+            text-align: center;
+            padding: 0 calc(var(--size)*2/100) 0;
+            line-height: calc(var(--size)*8/100);
+            border-radius: calc(var(--size)*2/100);
+            background: #1f9eff;
+            box-shadow: 1px 1px 2px #1a86d9,
+                -1px -1px 2px #24b6ff;
+        }
+
+        input[type="text"] {
+            width: calc(100% - calc(var(--size)*12/100));
+            height: 100%;
+            background: transparent;
+            border: 1px;
+            font-size: 300%;
+            padding: 0;
+        }
+
+        label {
+            font-size: 200%;
+        }
+
+        input[type="radio"] {
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            appearance: none;
+            position: relative;
+        }
+
+        input[type="radio"]:before {
+            content: '';
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            border: 1px solid #7d7d7d;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:checked:before {
+            content: '';
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            border: 1px solid #1f9eff;
+            background: #1f9eff;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:checked:after {
+            content: '';
+            width: calc(var(--size)*2/100);
+            height: calc(var(--size)*1/100);
+            border: 2px solid white;
+            border-top: transparent;
+            border-right: transparent;
+            text-align: center;
+            display: block;
+            position: absolute;
+            top: calc(var(--size)*1.2/100);
+            left: calc(var(--size)*1/100);
+            transform: rotate(-45deg);
+        }
+
+        #qrcodearea{
+            width: calc(var(--size)*50/100);
+            height: calc(var(--size)*50/100);
+            float: left;
+            display: none;
+        }
+
+        .qrcode-img{
+            width: 100%;
+            border-radius: calc(var(--size)*6/100);
+        }
+
+        @media only screen and (max-width: 600px) {
+            :root {
+                --size: 100vw
+            }
+
+            .block {
+                width: 80%;
+                margin: 5%;
+                padding: 2% 5%;
+            }
+        }
+
+        @media only screen and (min-width: 600px) and (max-width: 1200px) {
+            :root {
+                --size: 50vw
+            }
+
+            .block {
+                width: 40%;
+                margin: 2.5%;
+                padding: 2% 2.5%;
+            }
+        }
+
+        @media only screen and (min-width: 1200px) and (max-width: 1800px) {
+            :root {
+                --size: 33.3vw
+            }
+
+            .block {
+                width: 26.6%;
+                margin: 1.6%;
+                padding: 2% 1.6%;
+            }
+        }
+
+        @media only screen and (min-width: 1800px) {
+            :root {
+                --size: 25vw
+            }
+
+            .block {
+                width: 20%;
+                margin: 1.25%;
+                padding: 2% 1.25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 搜索 -->
+    <div class="block">
+        <div class="title">搜索</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('search').value=''"><img src="logo/bing.ico" class="logo-pic search-logo"></div>
+            <div class="input-area">
+                <input type="text" id="search" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, search)" autocomplete="off" autofocus>
+                <div class="button" onclick="search()" onselectstart="return false;">搜索</div>
+            </div>
+        </div>
+        <div class="select">
+            <input type="radio" name="search" value="biying" id="biying" checked onclick="document.getElementsByClassName('search-logo')[0].src='logo/bing.ico'"><label for="biying">必应</label>
+            <input type="radio" name="search" value="baidu" id="baidu" onclick="document.getElementsByClassName('search-logo')[0].src='logo/baidu.ico'"><label for="baidu">百度</label>
+            <input type="radio" name="search" value="zhihu" id="zhihu" onclick="document.getElementsByClassName('search-logo')[0].src='logo/zhihu.ico'"><label for="zhihu">知乎</label>
+            <input type="radio" name="search" value="weibo" id="weibo" onclick="document.getElementsByClassName('search-logo')[0].src='logo/weibo.ico'"><label for="weibo">微博</label>
+        </div>
+    </div>
+
+    <!-- 代码资源 -->
+    <div class="block">
+        <div class="title">搜代码</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('code').value=''"><img src="logo/csdn.ico" class="logo-pic code-logo"></div>
+            <div class="input-area">
+                <input type="text" id="code" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, code)" autocomplete="off">
+                <div class="button" onclick="code()">搜索</div>
+            </div>
+        </div>
+        <div class="select">
+            <input type="radio" name="code" value="csdn" id="csdn" checked onclick="document.getElementsByClassName('code-logo')[0].src='logo/csdn.ico'"><label for="csdn">csdn</label>
+            <input type="radio" name="code" value="github" id="github" onclick="document.getElementsByClassName('code-logo')[0].src='logo/github.ico'"><label for="github">github</label>
+            <input type="radio" name="code" value="blog" id="blog" onclick="document.getElementsByClassName('code-logo')[0].src='logo/博客园.ico'"><label for="blog">博客园</label>
+        </div>
+    </div>
+
+    <!-- 搜视频 -->
+    <div class="block">
+        <div class="title">搜视频</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('video').value=''"><img src="logo/腾讯视频.ico" class="logo-pic video-logo"></div>
+            <div class="input-area">
+                <input type="text" id="video" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, video)" autocomplete="off">
+                <div class="button" onclick="video()">搜索</div>
+            </div>
+        </div>
+        <div class="select">
+            <input type="radio" name="video" value="tencent" id="tencent" checked onclick="document.getElementsByClassName('video-logo')[0].src='logo/腾讯视频.ico'"><label for="tencent">腾讯视频</label>
+            <input type="radio" name="video" value="iqiyi" id="iqiyi" onclick="document.getElementsByClassName('video-logo')[0].src='logo/爱奇艺.png'"><label for="iqiyi">爱奇艺</label>
+            <input type="radio" name="video" value="bilibili" id="bilibili" onclick="document.getElementsByClassName('video-logo')[0].src='logo/哔哩哔哩.ico'"><label for="bilibili">B站</label>
+        </div>
+    </div>
+
+    <!-- 视频解析 -->
+    <div class="block">
+        <div class="title">视频解析</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('jiexi').value=''"><img src="" class="logo-pic jiexi-logo"></div>
+            <div class="input-area">
+                <input type="text" id="jiexi" placeholder="请输入视频链接" onkeydown="keyup_submit(event, jiexi)" autocomplete="off">
+                <div class="button" onclick="jiexi()">解析</div>
+            </div>
+        </div>
+        <div class="select">
+            <input type="radio" name="jiexi" value="bzhan1" id="bzhan1" checked><label for="bzhan1">解析1</label>
+        </div>
+    </div>
+
+    <!-- 二维码生成 -->
+    <div class="block">
+        <div class="title">二维码生成</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('qrcode').value=''"><img src="logo/qrcode.jpg" class="logo-pic qrcode-logo"></div>
+            <div class="input-area">
+                <input type="text" id="qrcode" placeholder="请输入二维码内容" onkeydown="keyup_submit(event, makeCode)" autocomplete="off">
+                <div class="button" onclick="makeCode()">生成</div>
+            </div>
+            <div id="qrcodearea"><img src='' class="qrcode-img"></div>
+        </div>
+    </div>
+
+
+    <script>
+        var images = new Array()
+
+        function preload() {
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i]
+            }
+        }
+
+        preload(
+            'logo/baidu.ico', 'logo/bing.ico', 'logo/csdn.ico', 'logo/github.ico', 'logo/qrcode.jpg', 'logo/博客园.ico', 'logo/哔哩哔哩.ico', 'logo/爱奇艺.png', 'logo/腾讯视频.ico', 'logo/zhihu.ico', 'logo/weibo.ico'
+        )
+
+        function search() {
+            var content = document.getElementById('search').value;
+            var radio = document.getElementsByName('search');
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    if (radio[i].value == 'biying') {
+                        window.location.href = 'https://cn.bing.com/search?q=' + content;
+                    } else if (radio[i].value == 'baidu') {
+                        window.location.href = 'https://www.baidu.com/s?wd=' + content;
+                    } else if (radio[i].value == 'zhihu') {
+                        window.location.href = 'https://www.zhihu.com/search?type=content&q=' + content;
+                    } else if (radio[i].value == 'weibo') {
+                        window.location.href = 'https://s.weibo.com/weibo/' + content;
+                    }
+                }
+            }
+        }
+
+        function code() {
+            var content = document.getElementById('code').value;
+            var radio = document.getElementsByName('code');
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    if (radio[i].value == 'csdn') {
+                        window.location.href = 'https://so.csdn.net/so/search?q=' + content;
+                    } else if (radio[i].value == 'blog') {
+                        window.location.href = 'https://zzk.cnblogs.com/s?w=' + content;
+                    } else if (radio[i].value == 'github') {
+                        window.location.href = 'https://github.com/search?q=' + content;
+                    }
+                }
+            }
+        }
+
+        function video() {
+            var content = document.getElementById('video');
+            if (!content.value) {
+                alert("请输入要搜索的内容");
+                content.focus();
+                return;
+            }
+            var radio = document.getElementsByName('video');
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    if (radio[i].value == 'tencent') {
+                        window.location.href = 'https://v.qq.com/x/search/?q=' + content.value;
+                    } else if (radio[i].value == 'iqiyi') {
+                        window.location.href = 'https://so.iqiyi.com/so/q_' + content.value;
+                    } else if (radio[i].value == 'bilibili') {
+                        window.location.href = 'https://search.bilibili.com/all?keyword=' + content.value;
+                    }
+                }
+            }
+        }
+
+        function jiexi() {
+            var content = document.getElementById('jiexi');
+            if (!content.value) {
+                alert("请输入要解析的内容");
+                content.focus();
+                return;
+            }
+            var radio = document.getElementsByName('jiexi');
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    if (radio[i].value == 'bzhan1') {
+                        window.location.href = 'https://jx.parwix.com:4433/player/analysis.php?v=' + content.value;
+                    }
+                }
+            }
+        }
+
+        function makeCode() {
+            document.getElementById("qrcodearea").style.display='block';
+            var elText = document.getElementById("qrcode");
+
+            if (!elText.value) {
+                alert("请输入二维码内容");
+                elText.focus();
+                return;
+            }
+            document.getElementsByClassName('qrcode-img')[0].src='https://api.pwmqr.com/qrcode/create/?url='+elText.value;
+        }
+
+        function keyup_submit(e, fun){ 
+            var evt = window.event || e; 
+            if (evt.keyCode == 13){
+                fun()
+                }
+        }
+    </script>
+</body>
+
+</html>
