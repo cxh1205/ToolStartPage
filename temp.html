@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具起始页</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="qrcode.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <style>
+        *{
+            user-select: none;
+        }
+
+        body,
+        html {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .block {
+            height: auto;
+            border-radius: calc(var(--size)*6/100);
+            float: left;
+            background: #ffdbdb;
+            box-shadow: 19px 19px 37px #d9baba,
+                -19px -19px 37px #fffcfc;
+            font-size: calc(var(--size)*2/100);
+        }
+
+        .title {
+            font-size: 300%;
+            font-weight: bolder;
+        }
+
+        .textarea {
+            border-radius: calc(var(--size)*2/100);
+            background: #ffd6d6;
+            box-shadow: inset 19px 19px 37px #d9b6b6,
+                inset -19px -19px 37px #fff6f6;
+            margin: 2% 0 2%;
+            height: calc(var(--size)*8/100);
+            width: 100%;
+        }
+
+        .logo {
+            height: calc(var(--size)*8/100);
+            width: calc(var(--size)*8/100);
+            float: left;
+            
+        }
+
+        .logo-pic{
+            width: 100%;
+            border-radius: calc(var(--size)*2/100);
+            pointer-events:none;
+            /* transform: translate(0,50%); */
+        }
+
+        .input-area {
+            float: left;
+            width: calc(100% - calc(var(--size)*8/100));
+            height: 100%;
+        }
+
+        .button {
+            float: right;
+            height: 100%;
+            font-size: 200%;
+            width: auto;
+            text-align: center;
+            padding: 0 calc(var(--size)*2/100) 0;
+            line-height: calc(var(--size)*8/100);
+            border-radius: calc(var(--size)*2/100);
+            background: #1f9eff;
+            box-shadow: 1px 1px 2px #1a86d9,
+                -1px -1px 2px #24b6ff;
+        }
+
+        input[type="text"] {
+            width: calc(100% - calc(var(--size)*12/100));
+            height: 100%;
+            background: transparent;
+            border: 1px;
+            font-size: 300%;
+            padding: 0;
+        }
+
+        label {
+            font-size: 200%;
+        }
+
+        input[type="radio"] {
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            appearance: none;
+            position: relative;
+        }
+
+        input[type="radio"]:before {
+            content: '';
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            border: 1px solid #7d7d7d;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:checked:before {
+            content: '';
+            width: calc(var(--size)*4/100);
+            height: calc(var(--size)*4/100);
+            border: 1px solid #1f9eff;
+            background: #1f9eff;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:checked:after {
+            content: '';
+            width: calc(var(--size)*2/100);
+            height: calc(var(--size)*1/100);
+            border: 2px solid white;
+            border-top: transparent;
+            border-right: transparent;
+            text-align: center;
+            display: block;
+            position: absolute;
+            top: calc(var(--size)*1.2/100);
+            left: calc(var(--size)*1/100);
+            transform: rotate(-45deg);
+        }
+
+        #qrcodearea{
+            width: calc(var(--size)*50/100);
+            height: calc(var(--size)*50/100);
+            float: left;
+            display: none;
+        }
+
+        .qrcode{
+            width: 100%;
+            border-radius: calc(var(--size)*6/100);
+        }
+
+        @media only screen and (max-width: 600px) {
+            :root {
+                --size: 100vw
+            }
+
+            .block {
+                width: 80%;
+                margin: 5%;
+                padding: 2% 5%;
+            }
+        }
+
+        @media only screen and (min-width: 600px) and (max-width: 1200px) {
+            :root {
+                --size: 50vw
+            }
+
+            .block {
+                width: 40%;
+                margin: 2.5%;
+                padding: 2% 2.5%;
+            }
+        }
+
+        @media only screen and (min-width: 1200px) and (max-width: 1800px) {
+            :root {
+                --size: 33.3vw
+            }
+
+            .block {
+                width: 26.6%;
+                margin: 1.6%;
+                padding: 2% 1.6%;
+            }
+        }
+
+        @media only screen and (min-width: 1800px) {
+            :root {
+                --size: 25vw
+            }
+
+            .block {
+                width: 20%;
+                margin: 1.25%;
+                padding: 2% 1.25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 二维码生成 -->
+    <div class="block">
+        <div class="title">二维码生成</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('qrcode').value=''"><img src="logo/qrcode.jpg" class="logo-pic qrcode-logo"></div>
+            <div class="input-area">
+                <input type="text" id="qrcode" placeholder="请输入二维码内容" onkeydown="keyup_submit_(event, qrcode)" autocomplete="off">
+                <div class="button" onclick="qrcode()">生成</div>
+            </div>
+            <div id="qrcodearea"><img src='' class="qrcode"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="draw.js"></script>
+    <script>
+        // 预加载
+        function preload(logos) {
+            var images = new Array();
+            for (i = 0; i < logos.length; i++) {
+                images[i] = new Image()
+                images[i].src = logos[i]
+            }
+        }
+        var logos = [];
+        for(let i in data){
+            for(let j in data[i]['radios']){
+                logos.push(data[i]['radios'][j]['logo'])
+            }
+        }
+        preload(logos)
+        // 判断逻辑
+        function press_button(name){
+            var content = document.getElementById(name);
+            var radio = document.getElementsByName(name);
+            if (!content.value) {
+                alert(data[name]['blank']);
+                content.focus();
+                return;
+            }
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    window.location.href = data[name]['radios'][radio[i].value]['url'] + content.value;
+                }
+            }
+        }
+        function keyup_submit(e, name){ 
+            var evt = window.event || e; 
+            if (evt.keyCode == 13){
+                press_button(name)
+            }
+        }
+        function qrcode() {
+            document.getElementById("qrcodearea").style.display='block';
+            var elText = document.getElementById("qrcode");
+    
+            if (!elText.value) {
+                alert("请输入二维码内容");
+                elText.focus();
+                return;
+            }
+            document.getElementsByClassName('qrcode')[0].src='https://api.pwmqr.com/qrcode/create/?url='+elText.value;
+        }
+    
+        function keyup_submit_(e, fun){ 
+            var evt = window.event || e; 
+            if (evt.keyCode == 13){
+                fun()
+            }
+        }
+    </script>
+
+    
+</body>
+
+</html>
