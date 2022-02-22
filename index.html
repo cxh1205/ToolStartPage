@@ -259,15 +259,29 @@
     <div class="block">
         <div class="title">视频解析</div>
         <div class="textarea">
-            <div class="logo" ondblclick="document.getElementById('jeixi').value=''"><img src="" class="logo-pic"></div>
-            <div class="input-area"> <input type="text" id="jeixi" placeholder="请输入视频链接"
-                    onkeydown="keyup_submit(event, 'jeixi')" autocomplete="off" autofocus="">
-                <div class="button" onclick="press_button('jeixi')" onselectstart="return false;">解析</div>
+            <div class="logo" ondblclick="document.getElementById('jiexi').value=''"><img src="" class="logo-pic"></div>
+            <div class="input-area"> <input type="text" id="jiexi" placeholder="请输入视频链接"
+                    onkeydown="keyup_submit(event, 'jiexi')" autocomplete="off" autofocus="">
+                <div class="button" onclick="press_button('jiexi')" onselectstart="return false;">解析</div>
             </div>
         </div>
-        <div class="select"><input type="radio" name="jeixi" value="jiexi1" id="jiexi1" checked=""
+        <div class="select"><input type="radio" name="jiexi" value="jiexi1" id="jiexi1" checked=""
                 onclick="this.parentElement.parentElement.getElementsByTagName('img')[0].src=''"><label
                 for="jiexi1">解析1</label></div>
+    </div><!-- 下载解析 -->
+    <div class="block">
+        <div class="title">下载解析</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('download').value=''"><img src="logo/github.ico"
+                    class="logo-pic"></div>
+            <div class="input-area"> <input type="text" id="download" placeholder="请输入下载链接"
+                    onkeydown="keyup_submit(event, 'download')" autocomplete="off" autofocus="">
+                <div class="button" onclick="press_button('download')" onselectstart="return false;">下载</div>
+            </div>
+        </div>
+        <div class="select"><input type="radio" name="download" value="jiexi1" id="jiexi1" checked=""
+                onclick="this.parentElement.parentElement.getElementsByTagName('img')[0].src='logo/github.ico'"><label
+                for="jiexi1">github</label></div>
     </div>
 
     <!-- 二维码生成 -->
@@ -343,6 +357,8 @@
             }
         }
     </script>
+
+
 
 
 </body>

@@ -73,7 +73,7 @@ var data = {
             },
         },
     },
-    'jeixi': {
+    'jiexi': {
         'title': '视频解析',
         'placeholder': '请输入视频链接',
         'button': '解析',
@@ -83,6 +83,19 @@ var data = {
                 'name': '解析1',
                 'logo': '',
                 'url': 'https://jx.parwix.com:4433/player/analysis.php?v='
+            },
+        },
+    },
+    'download': {
+        'title': '下载解析',
+        'placeholder': '请输入下载链接',
+        'button': '下载',
+        'blank':'请输入要下载的文件链接',
+        'radios': {
+            'jiexi1': {
+                'name': 'github',
+                'logo': 'logo/github.ico',
+                'url': 'https://ghproxy.com/?q='
             },
         },
     },
