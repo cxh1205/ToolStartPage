@@ -279,9 +279,23 @@
                 <div class="button" onclick="press_button('download')" onselectstart="return false;">下载</div>
             </div>
         </div>
-        <div class="select"><input type="radio" name="download" value="jiexi1" id="jiexi1" checked=""
+        <div class="select"><input type="radio" name="download" value="githubjiexi" id="githubjiexi" checked=""
                 onclick="this.parentElement.parentElement.getElementsByTagName('img')[0].src='logo/github.ico'"><label
-                for="jiexi1">github</label></div>
+                for="githubjiexi">github</label></div>
+    </div><!-- 展示文件 -->
+    <div class="block">
+        <div class="title">展示文件</div>
+        <div class="textarea">
+            <div class="logo" ondblclick="document.getElementById('show').value=''"><img src="logo/hero.png"
+                    class="logo-pic"></div>
+            <div class="input-area"> <input type="text" id="show" placeholder="请输入文件链接"
+                    onkeydown="keyup_submit(event, 'show')" autocomplete="off" autofocus="">
+                <div class="button" onclick="press_button('show')" onselectstart="return false;">展示</div>
+            </div>
+        </div>
+        <div class="select"><input type="radio" name="show" value="md" id="md" checked=""
+                onclick="this.parentElement.parentElement.getElementsByTagName('img')[0].src='logo/hero.png'"><label
+                for="md">md</label></div>
     </div>
 
     <!-- 二维码生成 -->
