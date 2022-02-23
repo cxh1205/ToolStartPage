@@ -16,13 +16,13 @@
 
 ## 文件树
 
-- logo*（存储网页用到的图标）*
-  - xxx.ico*（可用.ico、.jpg、.png）*
-- index.html*（网站主网页）*
-- temp.html*（修改数据后的临时网页）*
-- draw.js*（渲染逻辑）*
-- data.js*（网页数据）*
-- favicon.ico*（网站logo）*
+- logo（存储网页用到的图标）
+  - xxx.ico（可用.ico、.jpg、.png）
+- index.html（网站主网页）
+- temp.html（修改数据后的临时网页）
+- draw.js（渲染逻辑）
+- data.js（网页数据）
+- favicon.ico（网站logo）
 
 #### 关于data.js
 
