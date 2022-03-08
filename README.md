@@ -18,11 +18,15 @@
 
 - logo（存储网页用到的图标）
   - xxx.ico（可用.ico、.jpg、.png）
+- js
+  - draw.js（渲染逻辑）
+  - data.js（网页数据）
+  - base.js（基础函数）
+  - main.js（网页运行逻辑）
 - index.html（网站主网页）
 - temp.html（修改数据后的临时网页）
-- draw.js（渲染逻辑）
-- data.js（网页数据）
 - favicon.ico（网站logo）
+- style.css（网页主要css）
 
 #### 关于data.js
 
@@ -40,6 +44,11 @@ var data = {
                 'url': '链接前缀如https://cn.bing.com/search?q='
             },
         }
+        'logo':'默认图标路径',
+        'extend':{
+            'html':'扩展代码'
+            'js':'扩展逻辑'
+        }
     },
 }
 ```
@@ -51,5 +60,4 @@ var data = {
 1. 更改data.js
 2. 在浏览器中打开temp.html
 3. 将其body中的代码覆盖index.html中body的代码
-4. 删除index.html中的`<script type="text/javascript" src="draw.js"></script>`
-5. 保存文件
+4. 保存文件
