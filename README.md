@@ -67,3 +67,9 @@ var data = {
 2. 在浏览器中打开temp.html
 3. 将其body中的代码覆盖index.html中body的代码
 4. 保存文件
+
+<br>
+
+## 展望
+- [ ] 学习vue.js框架，并用来部署网页
+- [ ] 增加快捷方式常驻block
