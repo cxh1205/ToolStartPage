@@ -27,3 +27,5 @@ function is_exist(obj, key) {
         return [];
     }
 }
+
+console.log('项目地址：https://github.com/cxh1205/ToolStartPage\n欢迎star和fork！\n\n提示：\n双击图标可以清空输入框\n按“回车”可以直接访问目标页')
