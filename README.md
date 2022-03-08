@@ -5,6 +5,12 @@
 [https://jim-tom.gitee.io](https://jim-tom.gitee.io/)*（部署在gitee上加速国内访问）*
 
 
+<br>
+
+### 小技巧
+1. `双击`图标可以清空搜索框
+2. 按`回车键`可以直接搜索
+
 
 ## 页面原理
 
