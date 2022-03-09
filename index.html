@@ -12,175 +12,129 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <!-- 搜索 -->
+<body><!-- 搜索 -->
     <div class="block search" onclick="document.querySelector('#search').focus()">
-        <div class="title">搜索</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#search').value=''"><img src="logo/bing.ico"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="search" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'search')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('search')">搜索</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="search" value="bing" id="bing"
-                onclick="document.querySelector('.search .logo-pic').src='logo/bing.ico'">
-            <label for="bing">必应</label>
-            <input type="radio" name="search" value="baidu" id="baidu"
-                onclick="document.querySelector('.search .logo-pic').src='logo/baidu.ico'">
-            <label for="baidu">百度</label>
-            <input type="radio" name="search" value="zhihu" id="zhihu"
-                onclick="document.querySelector('.search .logo-pic').src='logo/zhihu.ico'">
-            <label for="zhihu">知乎</label>
-            <input type="radio" name="search" value="weibo" id="weibo"
-                onclick="document.querySelector('.search .logo-pic').src='logo/weibo.ico'">
-            <label for="weibo">微博</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    <div class="title">搜索</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#search').value=''"><img src="logo/bing.ico" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="search" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'search')" autocomplete="off">
+    <div class="button" onclick="press_button('search')">搜索</div>
+    </div>
+    </div>
+    <div class="select">
+    <input type="radio" name="search" value="bing" id="bing" onclick="document.querySelector('.search .logo-pic').src='logo/bing.ico'">
+    <label for="bing">必应</label>
+    <input type="radio" name="search" value="baidu" id="baidu" onclick="document.querySelector('.search .logo-pic').src='logo/baidu.ico'">
+    <label for="baidu">百度</label>
+    <input type="radio" name="search" value="zhihu" id="zhihu" onclick="document.querySelector('.search .logo-pic').src='logo/zhihu.ico'">
+    <label for="zhihu">知乎</label>
+    <input type="radio" name="search" value="weibo" id="weibo" onclick="document.querySelector('.search .logo-pic').src='logo/weibo.ico'">
+    <label for="weibo">微博</label>
+    </div>
+    <div class="extend">
+    
+    </div>
     </div>
     <!-- 搜代码 -->
     <div class="block code" onclick="document.querySelector('#code').focus()">
-        <div class="title">搜代码</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#code').value=''"><img src="logo/csdn.ico"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="code" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'code')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('code')">搜索</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="code" value="csdn" id="csdn"
-                onclick="document.querySelector('.code .logo-pic').src='logo/csdn.ico'">
-            <label for="csdn">csdn</label>
-            <input type="radio" name="code" value="blog" id="blog"
-                onclick="document.querySelector('.code .logo-pic').src='logo/博客园.ico'">
-            <label for="blog">博客园</label>
-            <input type="radio" name="code" value="github" id="github"
-                onclick="document.querySelector('.code .logo-pic').src='logo/github.ico'">
-            <label for="github">github</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    <div class="title">搜代码</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#code').value=''"><img src="logo/csdn.ico" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="code" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'code')" autocomplete="off">
+    <div class="button" onclick="press_button('code')">搜索</div>
+    </div>
+    </div>
+    <div class="select">
+    <input type="radio" name="code" value="csdn" id="csdn" onclick="document.querySelector('.code .logo-pic').src='logo/csdn.ico'">
+    <label for="csdn">csdn</label>
+    <input type="radio" name="code" value="blog" id="blog" onclick="document.querySelector('.code .logo-pic').src='logo/博客园.ico'">
+    <label for="blog">博客园</label>
+    <input type="radio" name="code" value="github" id="github" onclick="document.querySelector('.code .logo-pic').src='logo/github.ico'">
+    <label for="github">github</label>
+    </div>
+    <div class="extend">
+    
+    </div>
     </div>
     <!-- 搜视频 -->
     <div class="block video" onclick="document.querySelector('#video').focus()">
-        <div class="title">搜视频</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#video').value=''"><img src="logo/哔哩哔哩.ico"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="video" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'video')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('video')">搜索</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="video" value="tencent" id="tencent"
-                onclick="document.querySelector('.video .logo-pic').src='logo/腾讯视频.ico'">
-            <label for="tencent">腾讯视频</label>
-            <input type="radio" name="video" value="iqiyi" id="iqiyi"
-                onclick="document.querySelector('.video .logo-pic').src='logo/爱奇艺.png'">
-            <label for="iqiyi">爱奇艺</label>
-            <input type="radio" name="video" value="bilibili" id="bilibili"
-                onclick="document.querySelector('.video .logo-pic').src='logo/哔哩哔哩.ico'">
-            <label for="bilibili">B站</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    <div class="title">搜视频</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#video').value=''"><img src="logo/腾讯视频.ico" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="video" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'video')" autocomplete="off">
+    <div class="button" onclick="press_button('video')">搜索</div>
+    </div>
+    </div>
+    <div class="select">
+    <input type="radio" name="video" value="tencent" id="tencent" onclick="document.querySelector('.video .logo-pic').src='logo/腾讯视频.ico'">
+    <label for="tencent">腾讯视频</label>
+    <input type="radio" name="video" value="iqiyi" id="iqiyi" onclick="document.querySelector('.video .logo-pic').src='logo/爱奇艺.png'">
+    <label for="iqiyi">爱奇艺</label>
+    <input type="radio" name="video" value="bilibili" id="bilibili" onclick="document.querySelector('.video .logo-pic').src='logo/哔哩哔哩.ico'">
+    <label for="bilibili">B站</label>
+    </div>
+    <div class="extend">
+    
+    </div>
     </div>
     <!-- 视频解析 -->
     <div class="block jiexi" onclick="document.querySelector('#jiexi').focus()">
-        <div class="title">视频解析</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#jiexi').value=''"><img src="" class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="jiexi" placeholder="请输入视频链接" onkeydown="keyup_submit(event, 'jiexi')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('jiexi')">解析</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="jiexi" value="jiexi1" id="jiexi1"
-                onclick="document.querySelector('.jiexi .logo-pic').src=''">
-            <label for="jiexi1">解析1</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    <div class="title">视频解析</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#jiexi').value=''"><img src="" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="jiexi" placeholder="请输入视频链接" onkeydown="keyup_submit(event, 'jiexi')" autocomplete="off">
+    <div class="button" onclick="press_button('jiexi')">解析</div>
+    </div>
+    </div>
+    <div class="select">
+    <input type="radio" name="jiexi" value="jiexi1" id="jiexi1" onclick="document.querySelector('.jiexi .logo-pic').src=''">
+    <label for="jiexi1">解析1</label>
+    </div>
+    <div class="extend">
+    
+    </div>
     </div>
     <!-- 下载解析 -->
     <div class="block download" onclick="document.querySelector('#download').focus()">
-        <div class="title">下载解析</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#download').value=''"><img src="logo/github.ico"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="download" placeholder="请输入下载链接" onkeydown="keyup_submit(event, 'download')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('download')">下载</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="download" value="githubjiexi" id="githubjiexi"
-                onclick="document.querySelector('.download .logo-pic').src='logo/github.ico'">
-            <label for="githubjiexi">github</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    <div class="title">下载解析</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#download').value=''"><img src="logo/github.ico" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="download" placeholder="请输入下载链接" onkeydown="keyup_submit(event, 'download')" autocomplete="off">
+    <div class="button" onclick="press_button('download')">下载</div>
     </div>
-    <!-- 展示文件 -->
-    <div class="block show" onclick="document.querySelector('#show').focus()">
-        <div class="title">展示文件</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#show').value=''"><img src="logo/hero.png"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="show" placeholder="请输入文件链接" onkeydown="keyup_submit(event, 'show')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('show')">展示</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="show" value="md" id="md"
-                onclick="document.querySelector('.show .logo-pic').src='logo/hero.png'">
-            <label for="md">md</label>
-        </div>
-        <div class="extend">
-
-        </div>
+    </div>
+    <div class="select">
+    <input type="radio" name="download" value="githubjiexi" id="githubjiexi" onclick="document.querySelector('.download .logo-pic').src='logo/github.ico'">
+    <label for="githubjiexi">github</label>
+    </div>
+    <div class="extend">
+    
+    </div>
     </div>
     <!-- 二维码生成 -->
     <div class="block qrcode" onclick="document.querySelector('#qrcode').focus()">
-        <div class="title">二维码生成</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#qrcode').value=''"><img src="logo/qrcode.jpg"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="qrcode" placeholder="请输入二维码内容" onkeydown="keyup_submit(event, 'qrcode')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('qrcode')">生成</div>
-            </div>
-        </div>
-        <div class="select">
-
-        </div>
-        <div class="extend">
-            <div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img"
-                    style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>
-        </div>
+    <div class="title">二维码生成</div>
+    <div class="textarea">
+    <div class="logo" ondblclick="document.querySelector('#qrcode').value=''"><img src="logo/qrcode.jpg" class="logo-pic"></div>
+    <div class="input-area">
+    <input type="text" id="qrcode" placeholder="请输入二维码内容" onkeydown="keyup_submit(event, 'qrcode')" autocomplete="off">
+    <div class="button" onclick="press_button('qrcode')">生成</div>
+    </div>
+    </div>
+    <div class="select">
+    
+    </div>
+    <div class="extend">
+    <div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>
+    </div>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
-
-</body>
+    
+    </body>
 
 </html>
