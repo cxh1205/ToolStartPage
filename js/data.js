@@ -99,19 +99,6 @@ var data = {
             },
         },
     },
-    'show': {
-        'title': '展示文件',
-        'placeholder': '请输入文件链接',
-        'button': '展示',
-        'blank':'请输入要展示的文件链接',
-        'radios': {
-            'md': {
-                'name': 'md',
-                'logo': 'logo/hero.png',
-                'url': 'https://tool.tuotuo.space/md/?l={0}'
-            },
-        },
-    },
     'qrcode': {
         'title': '二维码生成',
         'placeholder': '请输入二维码内容',
