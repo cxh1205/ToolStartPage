@@ -117,7 +117,7 @@ var data = {
         'button': '跳转',
         'blank':'请输入网址',
         'radios': {
-            'baidu': {
+            'baidu1': {
                 'name': '百度',
                 'logo': 'logo/baidu.ico',
                 'url': 'https://www.musiccopilot.club/baidu/?{0}'
