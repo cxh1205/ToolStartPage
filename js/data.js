@@ -111,4 +111,17 @@ var data = {
                 document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+content.value;'
         }
     },
+    'other': {
+        'title': '网页跳转',
+        'placeholder': '百度',
+        'button': '跳转',
+        'blank':'请输入网址',
+        'radios': {
+            'baidu': {
+                'name': '百度',
+                'logo': 'logo/baidu.ico',
+                'url': 'https://www.musiccopilot.club/baidu/?{0}'
+            },
+        },
+    },
 }
