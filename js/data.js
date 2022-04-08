@@ -27,6 +27,11 @@ var data = [
                     logo: 'logo/weibo.ico',
                     url: 'https://s.weibo.com/weibo/{0}'
                 },
+                {
+                    name: '谷歌',
+                    logo: 'logo/google.ico',
+                    url: 'https://www.google.com/search?q={0}'
+                },
             ],
             execute: 'open_new_page',
         }
@@ -53,6 +58,11 @@ var data = [
                     name: 'github',
                     logo: 'logo/github.ico',
                     url: 'https://github.com/search?q={0}'
+                },
+                {
+                    name: 'StackOverflow',
+                    logo: 'logo/stack.ico',
+                    url: 'https://stackoverflow.com/search?q={0}'
                 }
             ],
             execute: 'open_new_page',
@@ -80,6 +90,16 @@ var data = [
                     name: 'B站',
                     logo: 'logo/哔哩哔哩.ico',
                     url: 'https://search.bilibili.com/all?keyword={0}'
+                },
+                {
+                    name: '优酷',
+                    logo: 'logo/youku.ico',
+                    url: 'https://so.youku.com/search_video/q_{0}'
+                },
+                {
+                    name: '芒果',
+                    logo: 'logo/芒果.ico',
+                    url: 'https://so.mgtv.com/so?k={0}'
                 }
             ],
             execute: 'open_new_page',
@@ -127,13 +147,28 @@ var data = [
             button: '生成',
             if_blank: '请输入二维码内容',
             logo: 'logo/qrcode.jpg',
-            extend: {
-                'html': '<div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>',
-                'js': 'document.querySelector("#qrcodearea").style.height="auto";\
-                document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+content.value;'
-            },
-            execute: 'eval_my_js',
-        }
+            execute: 'eval_extend_js',
+        },
+        extend_html: '<div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>',
+        extend_js: `document.querySelector("#qrcodearea").style.height="auto";
+            document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+this.content;`,
+    },
+    {
+        name: 'copy',
+        title: '模板生成',
+        input_box: {
+            placeholder: '请输入插槽内容',
+            button: '复制',
+            if_blank: '请输入插槽内容',
+            radios: [
+                {
+                    name: '百度',
+                    logo: 'logo/baidu.ico',
+                    url: 'https://baidu.leeay.com/?s={0}'
+                },
+            ],
+            execute: 'copy',
+        },
     },
 ];
 

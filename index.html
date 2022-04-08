@@ -7,103 +7,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工具起始页</title>
     <link rel="shortcut icon" href="favicon.ico" />
-    <script type="text/javascript" src="js/data.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/vue.global.prod.js"></script>
-    <script type="text/javascript" src="js/base.js"></script>
+    <script src="js/base.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="block" v-for="block in data">
-        <div v-if="block.title">{{block.title}}</div>
-        <div v-if="block.input_box">
-            <div>
-                <div>
-                    <img :src="block.input_box.logo"/>
-                </div>
-                <div>
-                    <input type="text" :placeholder="block.input_box.placeholder" autocomplete="off">
-                </div>
-                <div>{{block.input_box.button}}</div>
-            </div>
-            <div v-if="block.input_box.radios">
-                <div v-for="radio in block.input_box.radios">
-                    <input type="radio" name="search" value="bing" id="bing">
-                    <label for="bing">必应</label>
-                </div>
-            </div>
-        </div>
+    <div class="block" v-for="block in data" :class="block.name" onclick="this.querySelector('input').focus()">
+        <block :block="block"></block>
     </div>
 
-    <div class="block search" onclick="document.querySelector('#search').focus()">
-        <div class="title">搜索</div>
-        <div class="textarea">
-            <div class="logo" ondblclick="document.querySelector('#search').value=''"><img src="logo/bing.ico"
-                    class="logo-pic"></div>
-            <div class="input-area">
-                <input type="text" id="search" placeholder="请输入搜索内容" onkeydown="keyup_submit(event, 'search')"
-                    autocomplete="off">
-                <div class="button" onclick="press_button('search')">搜索</div>
-            </div>
-        </div>
-        <div class="select">
-            <input type="radio" name="search" value="bing" id="bing"
-                onclick="document.querySelector('.search .logo-pic').src='logo/bing.ico'">
-            <label for="bing">必应</label>
-            <input type="radio" name="search" value="baidu" id="baidu"
-                onclick="document.querySelector('.search .logo-pic').src='logo/baidu.ico'">
-            <label for="baidu">百度</label>
-            <input type="radio" name="search" value="zhihu" id="zhihu"
-                onclick="document.querySelector('.search .logo-pic').src='logo/zhihu.ico'">
-            <label for="zhihu">知乎</label>
-            <input type="radio" name="search" value="weibo" id="weibo"
-                onclick="document.querySelector('.search .logo-pic').src='logo/weibo.ico'">
-            <label for="weibo">微博</label>
-        </div>
-        <div class="extend">
-
-        </div>
-    </div>
     <script>
         const app = Vue.createApp({
             data() {
                 return {
                     data: data
                 }
-            },
-            methods: {
-                open_new_page(url, content) {
-                    document.location.href = url.format(content);
-                },
-                eval_my_js(js) {
-                    eval(js);
-                }
             }
         });
-        app.component('block',{
-            prop:['block'],
-            template:`
-            <div v-if="block.title" class="title" :class="block.name">{{block.title}}</div>
-                <div v-if="input_box" class="input_box">
-                <div>
-                    <div class="logo-box">
-                        <img :src="block.input_box.logo" class="logo"/>
+        app.component('block', {
+            props: ['block'],
+            data() {
+                return {
+                    select: '',
+                    content: '',
+                    logo:'',
+                }
+            },
+            template: `
+            <div v-if="block.title" class="title">{{block.title}}</div>
+            <div v-if="block.input_box" class="input-box">
+                <div class="content-box">
+                    <div class="logo" @dblclick="content=''">
+                        <img v-if="block.input_box.logo" :src="block.input_box.logo" />
+                        <img v-else :src="logo" />
                     </div>
-                    <div>
-                        <input type="text" :placeholder="block.input_box.placeholder" autocomplete="off">
+                    <div class="content">
+                        <input :placeholder="block.input_box.placeholder" autocomplete="off" v-model="content" @keyup.enter="execute">
                     </div>
-                    <div class="button" >{{block.input_box.button}}</div>
+                    <div class="button" @click="execute">{{block.input_box.button}}</div>
                 </div>
-                <div v-if="block.input_box.radios">
-                    <div v-for="radio in block.input_box.radios">
-                        <input type="radio" name="search" value="bing" id="bing">
-                <label for="bing">必应</label>
+                <div v-if="block.input_box.radios" class="radios-box">
+                    <div v-for="radio in block.input_box.radios" class="radios" @click="logo=radio.logo">
+                        <label :for="block.name+radio.name">
+                            <input type="radio" v-model="select" :value="radio.url" :id="block.name+radio.name">
+                            <span></span>
+                            {{radio.name}}
+                        </label>
                     </div>
                 </div>
             </div>
-            `
+            <div v-if="block.extend_html" v-html="block.extend_html" class="extend"></div>
+            `,
+            methods:{
+                execute(){
+                    if(!this.content){
+                        alert(this.block.input_box.if_blank);
+                        return
+                    }
+                    if(this.block.input_box.execute=='open_new_page'){
+                        document.location.href = this.select.format(this.content);
+                    }
+                    else if(this.block.input_box.execute=='eval_extend_js'){
+                        eval(this.block.extend_js);
+                    }
+                    else if(this.block.input_box.execute=='copy'){
+                        copy(this.select.format(this.content))
+                    }
+                },
+            },
+            mounted(){
+                if(this.block.input_box){
+                    if(this.block.input_box.radios){
+                        this.select=this.block.input_box.radios[0].url;
+                        this.logo=this.block.input_box.radios[0].logo;
+                    }
+                }
+            }
         })
         const vm = app.mount('body');
+        // 默认聚焦第一个输入框
+        document.querySelector("input").focus();
     </script>
 </body>
 
