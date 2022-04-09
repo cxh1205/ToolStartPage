@@ -47,7 +47,7 @@ var data = [
                 {
                     name: 'csdn',
                     logo: 'logo/csdn.ico',
-                    url: 'https://so.csdn.net/so/search?q={0}'
+                    url: 'https://so.csdn.net/so/search?q={0}&t=blog'
                 },
                 {
                     name: '博客园',
