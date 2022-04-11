@@ -118,6 +118,11 @@ var data = [
                     logo: '',
                     url: 'https://jx.parwix.com:4433/player/analysis.php?v={0}'
                 },
+                {
+                    name: '解析2',
+                    logo: '',
+                    url: 'https://jsap.attakids.com/?url={0}'
+                },
             ],
             execute: 'open_new_page',
         }
