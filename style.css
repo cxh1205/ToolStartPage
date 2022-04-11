@@ -88,7 +88,7 @@ html {
     padding: 0 calc(var(--size)*2/100);
     line-height: calc(var(--size)*8/100);
     border-radius: calc(var(--size)*2/100);
-    background: #4fb3ff;
+    background: #77c4ff;
 }
 
 .radios-box .radios {
