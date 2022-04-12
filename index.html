@@ -75,6 +75,9 @@
                     else if(this.block.input_box.execute=='copy'){
                         copy(this.select.format(this.content))
                     }
+                    else if(this.block.input_box.execute=='copy_raw'){
+                        copy(this.select.format(this.content), false)
+                    }
                 },
             },
             mounted(){
