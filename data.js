@@ -156,7 +156,7 @@ var data = [
         },
         extend_html: '<div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>',
         extend_js: `document.querySelector("#qrcodearea").style.height="auto";
-            document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+this.content;`,
+        document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+encodeURIComponent(this.content);`,
     },
     {
         name: 'copy',
