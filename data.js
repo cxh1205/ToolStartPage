@@ -106,6 +106,20 @@ var data = [
         }
     },
     {
+        name: 'qrcode',
+        title: '二维码生成',
+        input_box: {
+            placeholder: '请输入二维码内容',
+            button: '生成',
+            if_blank: '请输入二维码内容',
+            logo: 'logo/qrcode.jpg',
+            execute: 'eval_extend_js',
+        },
+        extend_html: '<div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>',
+        extend_js: `document.querySelector("#qrcodearea").style.height="auto";
+        document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+encodeURIComponent(this.content);`,
+    },
+    {
         name: 'jiexi',
         title: '视频解析',
         input_box: {
@@ -143,20 +157,6 @@ var data = [
             ],
             execute: 'open_new_page',
         }
-    },
-    {
-        name: 'qrcode',
-        title: '二维码生成',
-        input_box: {
-            placeholder: '请输入二维码内容',
-            button: '生成',
-            if_blank: '请输入二维码内容',
-            logo: 'logo/qrcode.jpg',
-            execute: 'eval_extend_js',
-        },
-        extend_html: '<div id="qrcodearea" style="height:0;"><img src="" class="qrcode-img" style="width: 50%;border-radius: calc(var(--size)*6/100);"></div>',
-        extend_js: `document.querySelector("#qrcodearea").style.height="auto";
-        document.querySelector(".qrcode-img").src="https://api.pwmqr.com/qrcode/create/?url="+encodeURIComponent(this.content);`,
     },
     {
         name: 'copy',
