@@ -175,5 +175,22 @@ var data = [
             execute: 'copy',
         },
     },
+    {
+        name: 'show',
+        title: '展示文件',
+        input_box: {
+            placeholder: '请输入文件链接',
+            button: '展示',
+            if_blank: '请输入要展示的文件链接',
+            radios: [
+                {
+                    name: 'office',
+                    logo: 'logo/ms.ico',
+                    url: 'https://view.officeapps.live.com/op/view.aspx?src={0}'
+                },
+            ],
+            execute: 'open_new_page',
+        },
+    },
 ];
 
