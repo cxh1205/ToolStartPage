@@ -128,14 +128,19 @@ var data = [
             if_blank: '请输入要解析的视频链接',
             radios: [
                 {
-                    name: '解析1',
+                    name: 'B站',
                     logo: '',
                     url: 'https://jx.parwix.com:4433/player/analysis.php?v={0}'
                 },
                 {
-                    name: '解析2',
+                    name: 'BL',
                     logo: '',
-                    url: 'https://jsap.attakids.com/?url={0}'
+                    url: 'https://svip.bljiex.cc/?v={0}'
+                },
+                {
+                    name: 'B',
+                    logo: '',
+                    url: 'https://lecurl.cn/?url={0}'
                 },
             ],
             execute: 'open_new_page',
