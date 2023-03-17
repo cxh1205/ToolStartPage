@@ -128,19 +128,14 @@ var data = [
             if_blank: '请输入要解析的视频链接',
             radios: [
                 {
+                    name: '爱豆',
+                    logo: '',
+                    url: 'https://jx.aidouer.net/?url={0}'
+                },
+                {
                     name: 'B站',
                     logo: '',
-                    url: 'https://jx.parwix.com:4433/player/analysis.php?v={0}'
-                },
-                {
-                    name: 'BL',
-                    logo: '',
-                    url: 'https://svip.bljiex.cc/?v={0}'
-                },
-                {
-                    name: 'B',
-                    logo: '',
-                    url: 'https://lecurl.cn/?url={0}'
+                    url: 'https://jx.jsonplayer.com/player/?url={0}'
                 },
             ],
             execute: 'open_new_page',
@@ -157,7 +152,7 @@ var data = [
                 {
                     name: 'github',
                     logo: 'logo/github.ico',
-                    url: 'https://ghproxy.com/?q={0}'
+                    url: 'https://gh.flyinbug.top/gh/{0}'
                 },
             ],
             execute: 'open_new_page',
@@ -175,6 +170,11 @@ var data = [
                     name: '百度',
                     logo: 'logo/baidu.ico',
                     url: 'https://baidu.leeay.com/?s={0}'
+                },
+                {
+                    name: '爱心',
+                    logo: '',
+                    url: 'https://share.tuotuo.space/love-you?{0}'
                 },
             ],
             execute: 'copy',
